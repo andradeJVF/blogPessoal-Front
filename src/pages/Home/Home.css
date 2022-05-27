@@ -1,12 +1,18 @@
-.titulo{
-    color: yellowgreen;
-    text-align: center;
+.caixa{
+    background-color: #3F51B5 !important;
 }
 
-.img{
-    width: 490px;
-    height: 490px;
-    display: block;
-    margin: 0 auto;
-    border-radius: 50%;
+.titulo{
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.button{
+    border-color: white !important;
+    background-color: #3F51B5 !important;
+    color: white !important;
+}
+
+.postagens{
+    background-color: white !important;
 }
