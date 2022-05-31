@@ -1,6 +1,7 @@
 import React from 'react'
-import { AppBar, Toolbar, Typography, Box } from '@material-ui/core'
+import { AppBar, Toolbar, Typography, Box, IconButton } from '@material-ui/core'
 import { Link } from 'react-router-dom'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import './NavBar.css'
 
@@ -8,48 +9,28 @@ function NavBar() {
     return (
         <>
             <AppBar position="static">
-                <Toolbar variant="dense">
-                    <Box className='cursor' >
-                        <Typography variant="h5" color="inherit">
-                            BlogPessoal
-                        </Typography>
+                <Toolbar variant="dense" className='bar'>
+
+                    <Typography className='cursor' variant="h5" color="inherit">
+                        Blog Pessoal
+                    </Typography>
+
+                    <Box className='links' mx={1} display='flex' justifyContent='start'>
+                        <Typography variant="h6" color="inherit">Home</Typography>
+                        <Typography variant="h6" color="inherit">Postagens</Typography>
+                        <Typography variant="h6" color="inherit">Temas</Typography>
+                        <Typography variant="h6" color="inherit">Cadastrar Tema</Typography>
                     </Box>
 
-                    <Box display="flex" justifyContent="start">
-                        <Box mx={1} className='cursor'>
-                            <Typography variant="h6" color="inherit">
-                                home
-                            </Typography>
-                        </Box>
-                        <Box mx={1} className='cursor'>
-                            <Typography variant="h6" color="inherit">
-                                postagens
-                            </Typography>
-                        </Box>
-                        <Box mx={1} className='cursor'>
-                            <Typography variant="h6" color="inherit">
-                                temas
-                            </Typography>
-                        </Box>
-                        <Box mx={1} className='cursor'>
-                            <Typography variant="h6" color="inherit">
-                                cadastrar tema
-                            </Typography>
-                        </Box>
-                        <Link to='/Login' className='text-decorator-none'>
-                            <Box mx={1} className='cursor'>
-                                <Typography variant="h6" color="inherit">
-                                    logout
-                                </Typography>
-                            </Box>
+                    <IconButton className='text-decorator-none' edge="start" color="inherit" aria-label="menu">
+                        <Link to='/login' className='text-decorator-none'>
+                            <ExitToAppIcon />
                         </Link>
-
-                    </Box>
+                    </IconButton>
 
                 </Toolbar>
             </AppBar>
         </>
     )
 }
-
 export default NavBar

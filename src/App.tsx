@@ -4,8 +4,10 @@ import NavBar from './components/statics/navbar/NavBar';
 import Footer from './components/statics/footer/Footer';
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login';
+import CadastroUsuario from './pages/cadastroUsuario/CadastroUsuario';
 
 import './App.css';
+
 
 function App() {
   return (
@@ -16,7 +18,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
-          {/* <Route path="/cadastro" element={<CadastroUsuario />} /> */}
+          <Route path="/cadastrousuario" element={<CadastroUsuario />} />
         </Routes>
       </div>
       <Footer />

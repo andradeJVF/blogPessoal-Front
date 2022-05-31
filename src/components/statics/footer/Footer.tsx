@@ -16,6 +16,7 @@ function Footer() {
                             <Typography variant="h5" align="center" gutterBottom className='textos'>Siga-nos nas redes sociais </Typography>
                         </Box>
                         <Box display="flex" alignItems="center" justifyContent="center">
+
                             <a href="https://www.linkedin.com/in/jo%C3%A3o-andrade-580270217/" target="_blank">
                                 <LinkedInIcon className='redes'/>
                             </a>
@@ -25,6 +26,7 @@ function Footer() {
                             <a href="https://www.instagram.com/andrade__jv/" target="_blank">
                                 <InstagramIcon className='redes'/>
                             </a>
+                            
                         </Box>
                     </Box>
                     <Box className='box2'>
