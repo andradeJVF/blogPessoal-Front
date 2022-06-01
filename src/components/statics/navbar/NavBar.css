@@ -4,6 +4,7 @@
 }
 
 .bar{
+    background: linear-gradient(90deg, rgba(49,29,56,1) 0%, rgba(75,0,111,1) 59%, rgba(244,0,255,1) 100%);;
     display: flex;
     justify-content: space-between;
 }
