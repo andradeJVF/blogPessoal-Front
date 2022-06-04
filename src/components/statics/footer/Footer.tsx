@@ -9,37 +9,19 @@ import './Footer.css'
 function Footer() {
     return (
         <>
-            <Grid container direction="row" justifyContent="center" alignItems="center">
-                <Grid alignItems="center" item xs={12}>
-                    <Box className='box1'>
-                        <Box paddingTop={1} display="flex" alignItems="center" justifyContent="center">
-                            <Typography variant="h5" align="center" gutterBottom className='textos'>Siga-nos nas redes sociais </Typography>
-                        </Box>
-                        <Box display="flex" alignItems="center" justifyContent="center">
+            <Grid container direction="row" justifyContent="space-between" alignItems="center" xs={12} className='box1' >
 
-                            <a href="https://www.linkedin.com/in/jo%C3%A3o-andrade-580270217/" target="_blank">
-                                <LinkedInIcon className='redes' />
-                            </a>
-                            <a href="https://github.com/andradeJVF" target="_blank">
-                                <GitHubIcon className='redes' />
-                            </a>
-                            <a href="https://www.instagram.com/andrade__jv/" target="_blank">
-                                <InstagramIcon className='redes' />
-                            </a>
+                <Box className='box2' >
+                    <a href="https://www.linkedin.com/in/jo%C3%A3o-andrade-580270217/" target="_blank"><LinkedInIcon className='redes' /></a>
+                    <a href="https://github.com/andradeJVF" target="_blank"><GitHubIcon className='redes' /></a>
+                    <a href="https://www.instagram.com/andrade__jv/" target="_blank"><InstagramIcon className='redes' /></a>
+                </Box>
 
-                        </Box>
-                    </Box>
-                    <Box className='box2'>
-                        <Box paddingTop={1}>
-                            <Typography variant="subtitle2" align="center" gutterBottom className='textos' >© 2022 Copyright:</Typography>
-                        </Box>
-                        <Box className='textos'>
-                            <a target="_blank" href="mailto:joao.felixandrade1201@gmail.com">
-                                <Typography variant="subtitle2" gutterBottom  align="center">João Vitor Felix de Andrade</Typography>
-                            </a>
-                        </Box>
-                    </Box>
-                </Grid>
+                <Box className='box3'>
+                    <Typography variant="subtitle2" align="center" gutterBottom className='box3'>© 2022 Copyright:</Typography>
+                    <a target="_blank" href="mailto:joao.felixandrade1201@gmail.com"><Typography variant="subtitle2" gutterBottom align="center" className='box3'>João Vitor Felix de Andrade</Typography></a>
+                </Box>
+
             </Grid>
         </>
     )

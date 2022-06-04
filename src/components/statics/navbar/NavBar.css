@@ -9,8 +9,9 @@
     justify-content: space-between;
 }
 
-.links h6{
-    padding-right: 16px!important;
-    cursor: pointer;
-    color: white;
+.links{
+    padding-right: 30px!important;
+    cursor: pointer !important;
+    color: white !important;
+    text-decoration: none !important;
 }

@@ -34,4 +34,5 @@ function TabPostagem() {
         </>
     );
 }
+
 export default TabPostagem;
