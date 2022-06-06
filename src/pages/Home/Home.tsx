@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Typography, Box, Grid, Button } from '@material-ui/core'
 import TabPostagem from '../../components/postagens/tabPostagem/TabPostagem'
 import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useLocalStorage from 'react-use-localstorage'
 
 import './Home.css'
@@ -33,7 +33,9 @@ function Home() {
             <Box marginRight={1}>
               <ModalPostagem />
             </Box>
+            <Link to='/posts' className='link'>
             <Button variant="outlined" className='button'>Ver Postagens</Button>
+            </Link>
           </Box>
         </Grid>
         <Grid item xs={6} >

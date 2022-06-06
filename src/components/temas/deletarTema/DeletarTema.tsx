@@ -12,11 +12,10 @@ function DeletarTema() {
   let navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const [token, setToken] = useLocalStorage('token');
-
   const [tema, setTema] = useState<Tema>()
 
   useEffect(() => {
-    if (token == '') {
+    if (token === '') {
       alert("Você precisa estar logado!")
       navigate('/login')
     }
@@ -29,21 +28,26 @@ function DeletarTema() {
   }, [id])
 
   async function findById(id: string) {
-    buscaId(`/tema/${id}`, setTema, {
+    await buscaId(`/temas/${id}`, setTema, {
       headers: {
         'Authorization': token
       }
     })
   }
 
-  function sim() {
+  async function sim() {
     navigate('/temas')
-    deleteId(`/temas/${id}`, {
-      headers: {
-        'Authorization': token
-      }
-    });
-    alert("Tema deletado com sucesso!");
+    try {
+      await deleteId(`/temas/${id}`, {
+        headers: {
+          'Authorization': token
+        }
+      });
+      alert('Tema deletado com sucesso!');
+    } catch (error) {
+      alert('Erro ao deletar');
+    }
+
   }
 
   function nao() {
@@ -64,6 +68,7 @@ function DeletarTema() {
               </Typography>
             </Box>
           </CardContent>
+
           <CardActions>
             <Box display="flex" justifyContent="start" ml={1.0} mb={2} >
               <Box mx={2}>

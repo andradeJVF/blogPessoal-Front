@@ -12,11 +12,10 @@ function DeletarPostagem() {
   let navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const [token, setToken] = useLocalStorage('token');
-
   const [post, setPosts] = useState<Postagem>()
 
   useEffect(() => {
-    if (token == '') {
+    if (token === '') {
       alert("Você precisa estar logado!")
       navigate('/login')
     }
@@ -29,16 +28,16 @@ function DeletarPostagem() {
   }, [id])
 
   async function findById(id: string) {
-    buscaId(`/postagens/${id}`, setPosts, {
+    await buscaId(`/postagens/${id}`, setPosts, { //await incluido, não consta no do professor
       headers: {
         'Authorization': token
       }
     })
   }
 
-  function sim() {
+  async function sim() {
     navigate('/posts')
-    deleteId(`/posts/${id}`, {
+    await deleteId(`/postagens/${id}`, {
       headers: {
         'Authorization': token
       }

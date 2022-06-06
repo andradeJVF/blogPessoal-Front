@@ -10,10 +10,13 @@
     font-weight: bold !important;
 }
 
-.button{
+.link{
+    text-decoration: none !important;
+}
+.link button{
+    color: white !important;
     border-color: white !important;
     background-color: #3F51B5 !important;
-    color: white !important;
 }
 
 .postagens{

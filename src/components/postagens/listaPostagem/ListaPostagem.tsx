@@ -2,27 +2,28 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Box, Card, CardActions, CardContent, Button, Typography, Grid } from '@material-ui/core';
 import useLocalStorage from 'react-use-localstorage';
-import { busca } from '../../../services/Service';
+import { busca, post } from '../../../services/Service';
 import Postagem from '../../../models/Postagem';
 
 import './ListaPostagem.css';
+import { ClassNames } from '@emotion/react';
 
 function ListaPostagem() {
 
-  const [posts, setPosts] = useState<Postagem[]>([])
+  const [posts, setPost] = useState<Postagem[]>([])
   const [token, setToken] = useLocalStorage('token')
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (token == '') {
+    if (token === '') {
       alert("Você precisa estar logado!")
       navigate('/login')
     }
   }, [token])
 
   async function getPost() {
-    await busca('/postagem', setPosts, {
-      Headers: {
+    await busca('/postagens', setPost, {
+      headers: {
         'Authorization': token
       }
     })
@@ -34,37 +35,36 @@ function ListaPostagem() {
 
   return (
     <>
-
       {
-        posts.map(posts => (
-
-          <Box m={2} >
-            <Card variant="outlined">
+        posts.map(post => (
+          <Box display='flex' justifyContent='center' m={2}>
+            <Card className='post' variant="outlined">
               <CardContent>
                 <Typography color="textSecondary" gutterBottom>
                   Postagens
                 </Typography>
                 <Typography variant="h5" component="h2">
-                  Título
+                  {post.titulo}
                 </Typography>
                 <Typography variant="body2" component="p">
-                  Texto da Postagem
+                  {post.texto}
                 </Typography>
                 <Typography variant="body2" component="p">
-                  Tema
+                  {post.tema?.descricao}
                 </Typography>
               </CardContent>
+
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
 
-                  <Link to={`/formularioPostagem/${posts.id}`} className="text-decorator-none" >
+                  <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
                     <Box mx={1}>
                       <Button variant="contained" className="marginLeft" size='small' color="primary" >
                         atualizar
                       </Button>
                     </Box>
                   </Link>
-                  <Link to={`/deletarPostagem/${posts.id}`} className="text-decorator-none">
+                  <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
                     <Box mx={1}>
                       <Button variant="contained" size='small' color="secondary">
                         deletar
@@ -75,10 +75,10 @@ function ListaPostagem() {
               </CardActions>
             </Card>
           </Box>
-
         ))}
 
-    </>)
+    </>
+  )
 }
 
 export default ListaPostagem;

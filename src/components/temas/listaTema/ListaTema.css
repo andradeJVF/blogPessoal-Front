@@ -2,13 +2,6 @@
     text-decoration: none;
 }
 
-.back{
-    background-image: url(https://i.imgur.com/u14l7VA.gif)!important;
-    background-repeat: no-repeat;
-    background-size: cover !important;
-    height: 100vh;
-}
-
 .card{
     background-color: aqua !important;
 }

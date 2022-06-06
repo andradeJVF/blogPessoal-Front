@@ -15,25 +15,24 @@ function CadastroPostagem() {
     const [temas, setTemas] = useState<Tema[]>([])
     const [token, setToken] = useLocalStorage('token');
 
-    useEffect(() => {
-        if (token == "") {
-            alert("Você precisa estar logado!")
-            navigate("/login")
-
-        }
-    }, [token])
-
-    const [tema, setTema] = useState<Tema>(
-        {
-            id: 0,
-            descricao: ''
-        })
+    const [tema, setTema] = useState<Tema>({
+        id: 0,
+        descricao: ''
+    })
     const [postagem, setPostagem] = useState<Postagem>({
         id: 0,
         titulo: '',
         texto: '',
+        data: '',
         tema: null
     })
+
+    useEffect(() => {
+        if (token === "") {
+            alert("Você precisa estar logado!")
+            navigate("/login")
+        }
+    }, [token])
 
     useEffect(() => {
         setPostagem({
@@ -50,7 +49,7 @@ function CadastroPostagem() {
     }, [id])
 
     async function getTemas() {
-        await busca("/tema", setTemas, {
+        await busca("/temas", setTemas, {
             headers: {
                 'Authorization': token
             }
@@ -78,22 +77,30 @@ function CadastroPostagem() {
         e.preventDefault()
 
         if (id !== undefined) {
-            put(`/postagens`, postagem, setPostagem, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-            alert('Postagem atualizada com sucesso!');
-        } else {
-            post(`/postagens`, postagem, setPostagem, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-            alert('Postagem cadastrada com sucesso!');
-        }
-        back()
+            try {
+                await put(`/postagens`, postagem, setPostagem, {
+                    headers: {
+                        'Authorization': token
+                    }
+                })
+                alert('Postagem atualizada com sucesso!');
+            } catch (error) {
+                alert("Erro ao atualizar postagem. Revise os campos")
+            }
 
+        } else {
+            try {
+                await post(`/postagens`, postagem, setPostagem, {
+                    headers: {
+                        'Authorization': token
+                    }
+                })
+                alert('Postagem cadastrada com sucesso!');
+            } catch (error) {
+                alert("Erro ao cadastrar nova postagem. Revise os campos")
+            }
+            back()
+        }
     }
 
     function back() {
@@ -112,7 +119,8 @@ function CadastroPostagem() {
                     <Select
                         labelId="demo-simple-select-helper-label"
                         id="demo-simple-select-helper"
-                        onChange={(e) => buscaId(`/temas/${e.target.value}`, setTema, {
+
+                        onChange={(e) => buscaId(`/temas/${e.target.value}`, setTema, { //verficar swagger
                             headers: {
                                 'Authorization': token
                             }
