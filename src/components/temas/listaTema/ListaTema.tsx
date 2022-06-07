@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Box, Card, CardActions, CardContent, Button, Typography, Grid } from '@material-ui/core';
-import useLocalStorage from 'react-use-localstorage';
 import Tema from '../../../models/Tema';
 import { busca } from '../../../services/Service';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 import './ListaTema.css';
 
@@ -11,7 +12,9 @@ function ListaTema() {
 
   let navigate = useNavigate();
   const [temas, setTemas] = useState<Tema[]>([])
-  const [token, setToken] = useLocalStorage('token')
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
 
   useEffect(() => {
     if (token === '') {
@@ -37,7 +40,7 @@ function ListaTema() {
       {
         temas.map(tema => (
 
-          <Box display='flex' justifyContent='center' paddingTop={2} paddingLeft={2}>
+          <Box display='flex' justifyContent='centerdede' paddingTop={2} paddingLeft={2}>
             <Card className='card' variant="outlined">
               <CardContent>
                 <Typography color="textSecondary" gutterBottom>

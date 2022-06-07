@@ -3,23 +3,24 @@ import { Typography, Box, Grid, Button } from '@material-ui/core'
 import TabPostagem from '../../components/postagens/tabPostagem/TabPostagem'
 import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem'
 import { Link, useNavigate } from 'react-router-dom'
-import useLocalStorage from 'react-use-localstorage'
-
+import { useSelector } from 'react-redux'
+import { TokenState } from '../../store/tokens/tokensReducer'
 import './Home.css'
-
 
 function Home() {
 
   let navigate = useNavigate();
-  const [token, setToken] = useLocalStorage('token');
-  
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+
   useEffect(() => {
     if (token == "") {
-        alert("Você precisa estar logado")
-        navigate("/login")
+      alert("Você precisa estar logado")
+      navigate("/login")
 
     }
-}, [token])
+  }, [token])
 
   return (
     <>
@@ -34,12 +35,12 @@ function Home() {
               <ModalPostagem />
             </Box>
             <Link to='/posts' className='link'>
-            <Button variant="outlined" className='button'>Ver Postagens</Button>
+              <Button variant="outlined" className='button'>Ver Postagens</Button>
             </Link>
           </Box>
         </Grid>
         <Grid item xs={6} >
-          
+
         </Grid>
         <Grid xs={10} className='postagens'>
           <TabPostagem />
