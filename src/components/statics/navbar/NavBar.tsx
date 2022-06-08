@@ -2,11 +2,12 @@ import React from 'react'
 import { AppBar, Toolbar, Typography, Box, IconButton } from '@material-ui/core'
 import { Link, useNavigate } from 'react-router-dom'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-
-import './NavBar.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { addToken } from '../../../store/tokens/actions';
+import {toast} from 'react-toastify';
+
+import './NavBar.css'
 
 function NavBar() {
 
@@ -19,7 +20,16 @@ function NavBar() {
     function goLogout() {
         if (token != '') {
             dispatch(addToken(''))
-            alert("Usuário Deslogado!")
+            toast.info('Usuário Deslogado!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+            });
             navigate('/login')
         }
     }

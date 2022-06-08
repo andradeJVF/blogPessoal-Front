@@ -11,6 +11,9 @@ import CadastroPostagem from './components/postagens/cadastroPostagem/CadastroPo
 import CadastroTema from './components/temas/cadastroTema/CadastroTema';
 import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
 import DeletarTema from './components/temas/deletarTema/DeletarTema';
+import {ToastContainer} from 'react-toastify'
+
+import 'react-toastify/dist/ReactToastify.css';
 
 import './App.css';
 import store from './store/store';
@@ -19,7 +22,8 @@ import { Provider } from 'react-redux';
 function App() {
   return (
     <Provider store={store} >
-
+      <ToastContainer />
+      
       <Router>
         <NavBar />
         <div style={{ minHeight: '100vh' }}>
