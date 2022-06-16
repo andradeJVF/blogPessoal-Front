@@ -12,9 +12,9 @@ import { toast } from 'react-toastify'
 
 
 function Login() {
-    
-    let navigate = useNavigate();
-    const dispatch = useDispatch();
+
+    let navigate = useNavigate()
+    const dispatch = useDispatch()
     const [token, setToken] = useState('')
     const [userLogin, setUserLogin] = useState<UserLogin>(
         {
@@ -28,15 +28,14 @@ function Login() {
     )
 
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
-
         setUserLogin({
             ...userLogin,
             [e.target.name]: e.target.value
         })
     }
 
-    useEffect(()=>{
-        if(token != ''){
+    useEffect(() => {
+        if (token != '') {
             dispatch(addToken(token));
             navigate('/home')
         }
@@ -48,7 +47,7 @@ function Login() {
             await login(`/usuarios/logar`, userLogin, setToken)
             toast.success('Usuário Logado com Sucesso!', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
@@ -59,7 +58,7 @@ function Login() {
         } catch (error) {
             toast.error('Dados do Usuário inconsistentes. Erro ao logar!', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,

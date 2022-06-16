@@ -22,7 +22,7 @@ function DeletarPostagem() {
     if (token === '') {
       toast.info('Você precisa estar logado!', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,
@@ -41,7 +41,7 @@ function DeletarPostagem() {
   }, [id])
 
   async function findById(id: string) {
-    await buscaId(`/postagens/${id}`, setPosts, { //await incluido, não consta no do professor
+    await buscaId(`/postagens/${id}`, setPosts, {
       headers: {
         'Authorization': token
       }
@@ -57,7 +57,7 @@ function DeletarPostagem() {
     });
     toast.success('Postagem deletada com sucesso!', {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: false,

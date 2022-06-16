@@ -19,10 +19,10 @@ function DeletarTema() {
   const [tema, setTema] = useState<Tema>()
 
   useEffect(() => {
-    if (token === '') {
+    if (token == '') {
       toast.info('Você precisa estar logado!', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,
@@ -58,7 +58,7 @@ function DeletarTema() {
       });
       toast.success('Tema deletado com sucesso!', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,
@@ -69,7 +69,7 @@ function DeletarTema() {
     } catch (error) {
       toast.error('Erro ao deletar!', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,

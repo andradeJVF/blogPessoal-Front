@@ -11,17 +11,17 @@ import { toast } from 'react-toastify';
 
 function ListaPostagem() {
 
+  let navigate = useNavigate();
   const [posts, setPost] = useState<Postagem[]>([])
   const token = useSelector<TokenState, TokenState["tokens"]>(
     (state) => state.tokens
   );
-  let navigate = useNavigate();
 
   useEffect(() => {
     if (token === '') {
       toast.info('Você precisa estar logado!', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,

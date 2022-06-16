@@ -23,10 +23,10 @@ function CadastroTema() {
     })
 
     useEffect(() => {
-        if (token === '') {
+        if (token == '') {
             toast.info('Você precisa estar logado!', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
@@ -62,11 +62,10 @@ function CadastroTema() {
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-
-        console.log("tema" + JSON.stringify(tema)) //
+        console.log("tema" + JSON.stringify(tema))
 
         if (id !== undefined) {
-            console.log(tema) //
+            console.log(tema)
             try {
                 await put(`/temas`, tema, setTema, {
                     headers: {
@@ -75,7 +74,7 @@ function CadastroTema() {
                 })
                 toast.success('Tema atualizado com sucesso!', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -87,7 +86,7 @@ function CadastroTema() {
                 console.log(`Error: ${error}`)
                 toast.error('Erro, por favor verifique a quantidade minima de caracteres!', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -105,7 +104,7 @@ function CadastroTema() {
                 })
                 toast.success('Tema cadastrado com sucesso!', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -117,7 +116,7 @@ function CadastroTema() {
                 console.log(`Error: ${error}`)
                 toast.error('Erro, por favor verifique a quantidade minima de caracteres!', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
