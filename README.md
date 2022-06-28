@@ -7,4 +7,4 @@
 </ul>
 
 
-<h3>Link de acesso: <a> href="https://blog-jvfa.netlify.app/" target="_blank"</h3
+<h3>Link de acesso: <a>href="https://blog-jvfa.netlify.app/" target="_blank"</a></h3
